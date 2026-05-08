@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>山海集 · SHANHAIJI.AI — AI 原生的 IP 设计与孵化公司</title>
+<meta name="description" content="山海集 SHANHAIJI.AI — AI 原生的 IP 设计与孵化公司，业务覆盖 AI 互动漫剧、虚拟陪伴、IP 游戏与潮玩生态。代表作《我的 AI 实习男友》《五行小兽》。">
+<meta name="keywords" content="山海集,SHANHAIJI,AI IP,IP 孵化,AI 互动漫剧,我的 AI 实习男友,五行小兽,虚拟陪伴,潮玩,AI 内容生产">
+<meta name="theme-color" content="#0a0a0f">
+<meta name="author" content="山海集 SHANHAIJI">
+<meta property="og:type" content="website">
+<meta property="og:title" content="山海集 · SHANHAIJI.AI — AI 原生的 IP 设计与孵化">
+<meta property="og:description" content="用 AI 重新定义 IP 的创造、生产与商业化全流程。覆盖互动漫剧、虚拟陪伴、IP 游戏与潮玩生态。">
+<meta property="og:site_name" content="山海集 SHANHAIJI.AI">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="山海集 · SHANHAIJI.AI">
+<meta name="twitter:description" content="AI 原生的 IP 设计与孵化公司。">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0a0f'/%3E%3Ctext x='50%25' y='52%25' text-anchor='middle' dominant-baseline='middle' font-family='serif' font-size='22' font-weight='900' fill='%23d4a853'%3E山%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.loli.net">
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin>
+<link href="https://fonts.loli.net/css2?family=Noto+Serif+SC:wght@400;700;900&family=Outfit:wght@300;400;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "山海集",
+  "alternateName": ["SHANHAIJI", "SHANHAIJI.AI", "山海集文化创意科技"],
+  "url": "https://shanhaiji.ai",
+  "email": "contact@shanhaiji.ai",
+  "description": "AI 原生的 IP 设计与孵化公司，业务覆盖 AI 互动漫剧、虚拟陪伴、IP 游戏与潮玩生态。代表作《我的 AI 实习男友》《五行小兽》。",
+  "foundingDate": "2026",
+  "knowsAbout": [
+    "IP 设计",
+    "IP 孵化",
+    "AI 内容生产",
+    "AI 互动漫剧",
+    "AI 虚拟陪伴",
+    "潮玩盲盒",
+    "IP 游戏"
+  ],
+  "slogan": "以 AI 之力，铸山海万象"
+}
+</script>
+<style>
+  :root {
+    --ink: #0a0a0f;
+    --void: #050508;
+    --gold: #d4a853;
+    --gold-light: #f0d58c;
+    --gold-dim: #8a6d2b;
+    --gold-glow: rgba(201,168,76,0.12);
+    --crimson: #c43a3a;
+    --jade: #3abf8f;
+    --mist: #b8b8c8;
+    --ghost: rgba(255,255,255,0.06);
+    --glass: rgba(255,255,255,0.03);
+    --surface: #0c0c12;
+    --text: #c8c8d4;
+    --text-dim: rgba(200,200,212,0.45);
+    --border: rgba(255,255,255,0.06);
+    --border-gold: rgba(201,168,76,0.15);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+    overflow-x: hidden;
+  }
+
+  body {
+    background: var(--void);
+    color: #e0e0e8;
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  ::selection { background: var(--gold); color: var(--ink); }
+
+  /* ====== CANVAS BG ====== */
+  #particle-canvas {
+    position: fixed; top:0; left:0; width:100%; height:100%;
+    z-index: 0; pointer-events: none; opacity: 0.6;
+  }
+
+  /* ====== NAV ====== */
+  nav {
+    position: fixed; top:0; left:0; width:100%; z-index: 100;
+    padding: 0 48px;
+    height: 72px;
+    display: flex; justify-content: space-between; align-items: center;
+    backdrop-filter: blur(20px);
+    background: rgba(5,5,8,0.7);
+    border-bottom: 1px solid rgba(212,168,83,0.1);
+    transition: all 0.4s;
+  }
+  .nav-logo {
+    font-family:'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', STSong, serif;font-size:20px;font-weight:900;
+    color:var(--gold);letter-spacing:3px;
+    display:flex;align-items:center;gap:12px;
+  }
+  .nav-logo span { font-size: 12px; font-weight: 300; color: var(--mist); letter-spacing: 2px; font-family: 'Outfit'; display: block; margin-top: 2px; }
+  .nav-logo .dot{ width:6px;height:6px;background:var(--gold);border-radius:50%; }
+  .nav-links { display:flex; gap: 36px; align-items: center; }
+  .nav-links a {
+    color: var(--mist); text-decoration: none; font-size: 13px;
+    letter-spacing: 2px; text-transform: uppercase; font-weight: 400;
+    transition: color 0.3s; position: relative;
+  }
+  .nav-links a::after {
+    content:''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px;
+    background: var(--gold); transition: width 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-cta {
+    padding: 10px 28px; border: 1px solid var(--gold);
+    background: transparent; color: var(--gold) !important;
+    font-size: 12px !important; letter-spacing: 3px !important;
+    transition: all 0.3s !important; cursor: pointer;
+  }
+  .nav-cta:hover {
+    background: var(--gold) !important; color: var(--ink) !important;
+  }
+  .nav-toggle {
+    display: none; background: transparent; border: none;
+    width: 32px; height: 32px; padding: 0; cursor: pointer;
+    position: relative;
+  }
+  .nav-toggle span {
+    display: block; position: absolute; left: 5px; width: 22px; height: 1px;
+    background: var(--gold); transition: all 0.3s;
+  }
+  .nav-toggle span:nth-child(1) { top: 11px; }
+  .nav-toggle span:nth-child(2) { top: 16px; }
+  .nav-toggle span:nth-child(3) { top: 21px; }
+  .nav-toggle.open span:nth-child(1) { top: 16px; transform: rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { top: 16px; transform: rotate(-45deg); }
+
+  /* ====== HERO ====== */
+  .hero {
+    position: relative; z-index: 1;
+    min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 120px 48px 80px;
+    overflow: hidden;
+  }
+  .hero-bg-glyph {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', STSong, serif;
+    font-size: 38vw; font-weight: 900;
+    color: rgba(212,168,83,0.06);
+    pointer-events: none; user-select: none;
+    line-height: 1;
+  }
+  .hero-radial {
+    position: absolute; top: 50%; left: 50%;
+    width: 800px; height: 800px;
+    transform: translate(-50%,-50%);
+    background: radial-gradient(circle, rgba(212,168,83,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 900px; }
+  .hero h1 {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', STSong, serif;
+    font-size: clamp(42px, 7vw, 96px);
+    font-weight: 900; line-height: 1.15;
+    color: #fff;
+    animation: fadeUp 1s ease 0.4s both;
+  }
+  .hero h1 .gold { color: var(--gold); }
+  .hero h1 .thin {
+    font-weight: 400; font-family: 'Outfit';
+    font-size: clamp(18px, 2.5vw, 32px);
+    display: block; margin-top: 16px;
+    color: var(--mist); letter-spacing: 4px;
+  }
+  .hero-desc {
+    margin-top: 32px; font-size: 16px; line-height: 1.9;
+    color: rgba(184,184,200,0.7); max-width: 600px; margin-left: auto; margin-right: auto;
+    animation: fadeUp 1s ease 0.6s both;
+  }
+  .hero-buttons {
+    margin-top: 48px; display: flex; gap: 20px; justify-content: center;
+    animation: fadeUp 1s ease 0.8s both;
+  }
+  .btn-primary {
+    padding: 16px 40px; background: var(--gold); color: var(--ink);
+    font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+    border: none; cursor: pointer; transition: all 0.3s; text-decoration: none;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(212,168,83,0.25); }
+  .btn-ghost {
+    padding: 16px 40px; background: transparent; color: var(--mist);
+    font-size: 13px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase;
+    border: 1px solid rgba(255,255,255,0.15); cursor: pointer; transition: all 0.3s; text-decoration: none;
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+  .scroll-hint {
+    position: absolute; bottom: 40px; left: 0; right: 0;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    animation: fadeUp 1s ease 1.2s both;
+  }
+  .scroll-hint span { font-size: 10px; letter-spacing: 4px; color: var(--gold-dim); text-transform: uppercase; }
+  .scroll-line {
+    width: 1px; height: 40px; background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease infinite;
+  }
+
+  /* ====== SECTIONS ====== */
+  section { position: relative; z-index: 1; }
+  .section-pad { padding: 120px 48px; max-width: 1200px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 11px; letter-spacing: 6px; text-transform: uppercase;
+    color: var(--gold-dim); margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', STSong, serif;
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 900; color: #fff; line-height: 1.3;
+  }
+  .section-title .gold { color: var(--gold); }
+  .section-desc{ font-size:14px; line-height:1.9; color:var(--text-dim); max-width:460px; margin-top: 16px; }
+
+  /* ====== ABOUT ====== */
+  .about { border-top: 1px solid var(--ghost); }
+  .about-grid {
+    margin-top: 64px;
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px;
+  }
+  .about-stat {
+    background: var(--glass);
+    padding: 48px 36px;
+    border: 1px solid rgba(255,255,255,0.04);
+    transition: all 0.4s;
+  }
+  .about-stat:hover { background: rgba(212,168,83,0.05); border-color: rgba(212,168,83,0.15); }
+  .about-stat .num {
+    font-family: 'Outfit'; font-size: 56px; font-weight: 800;
+    color: var(--gold); line-height: 1;
+  }
+  .about-stat .unit { font-size: 16px; color: var(--gold-dim); font-weight: 300; }
+  .about-stat .label {
+    margin-top: 12px; font-size: 13px; letter-spacing: 2px;
+    color: var(--mist); text-transform: uppercase;
+  }
+
+  .about-text {
+    margin-top: 64px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
+    font-size: 15px; line-height: 2; color: rgba(184,184,200,0.6);
+  }
+  .about-text p:first-child::first-letter {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', STSong, serif;
+    font-size: 48px; float: left; color: var(--gold);
+    margin-right: 12px; line-height: 1; margin-top: 4px;
+  }
+
+  /* ====== BUSINESS ====== */
+  .business { border-top: 1px solid var(--ghost); }
+  .biz-grid {
+    margin-top: 64px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+  }
+  .biz-card {
+    background: var(--glass);
+    border: 1px solid rgba(255,255,255,0.04);
+    padding: 48px 32px;
+    position: relative; overflow: hidden;
+    transition: all 0.5s;
+    cursor: default;
+  }
+  .biz-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+    background: var(--gold);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.5s;
+  }
+  .biz-card:hover::before { transform: scaleX(1); }
+  .biz-card:hover {
+    background: rgba(212,168,83,0.04);
+    border-color: rgba(212,168,83,0.12);
+    transform: translateY(-4px);
+  }
+  .biz-icon {
+    width: 56px; height: 56px; margin-bottom: 28px;
+    color: var(--gold-dim);
+    transition: color 0.4s, transform 0.4s;
+  }
+  .biz-icon svg { width: 100%; height: 100%; display: block; }
+  .biz-card:hover .biz-icon {
+    color: var(--gold-light);
+    transform: translateY(-3px);
+  }
+  .biz-card h3 {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', STSong, serif;
+    font-size: 20px; font-weight: 700; color: #fff;
+    margin-bottom: 8px;
+  }
+  .biz-card .en {
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold-dim); margin-bottom: 20px;
+  }
+  .biz-card p {
+    font-size: 13px; line-height: 1.8; color: rgba(184,184,200,0.5);
+  }
+
+  /* ====== IP SHOWCASE ====== */
+  .showcase { border-top: 1px solid var(--ghost); }
+  .showcase-row {
+    margin-top: 64px;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  }
+  .showcase-item {
+    position: relative; overflow: hidden;
+    aspect-ratio: 4/5;
+    background: var(--glass);
+    border: 1px solid rgba(255,255,255,0.04);
+    cursor: pointer; transition: all 0.5s;
+  }
+  .showcase-item:hover { border-color: rgba(212,168,83,0.25); }
+  .showcase-item .ip-visual {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    padding: 8% 10% 35%;
+    transition: transform 0.7s ease;
+  }
+  .showcase-item:hover .ip-visual { transform: scale(1.04); }
+  .showcase-item .ip-visual svg {
+    width: 100%; height: 100%;
+    color: var(--gold);
+    opacity: 0.35;
+    transition: opacity 0.5s;
+  }
+  .showcase-item:hover .ip-visual svg { opacity: 0.6; }
+  .ip-status {
+    position: absolute; top: 24px; left: 24px; z-index: 3;
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    padding: 6px 14px; border: 1px solid var(--border-gold);
+    color: var(--gold); background: rgba(0,0,0,0.45); backdrop-filter: blur(8px);
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .ip-status .pulse {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 8px var(--gold);
+    animation: pulse 1.6s ease infinite;
+  }
+  .ip-status.coming { color: var(--mist); border-color: rgba(255,255,255,0.12); }
+  .ip-status.coming .pulse { background: var(--mist); box-shadow: none; animation: none; }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+  .showcase-item .ip-info {
+    position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
+    padding: 40px;
+    background: linear-gradient(to top, rgba(5,5,8,0.95) 30%, rgba(5,5,8,0.6) 70%, transparent);
+  }
+  .ip-info .ip-tag {
+    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 14px;
+  }
+  .ip-info h3 {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', STSong, serif;
+    font-size: 28px; font-weight: 900; color: #fff;
+    line-height: 1.3;
+  }
+  .ip-info .ip-en {
+    margin-top: 6px; font-size: 11px; letter-spacing: 3px;
+    color: var(--gold-dim); text-transform: uppercase;
+  }
+  .ip-info .ip-desc {
+    margin-top: 16px; font-size: 13px; color: rgba(184,184,200,0.65);
+    line-height: 1.8;
+  }
+  .ip-info .ip-meta {
+    margin-top: 20px; display: flex; gap: 20px;
+    padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.05);
+    flex-wrap: wrap;
+  }
+  .ip-info .ip-meta span {
+    font-size: 11px; letter-spacing: 2px;
+    color: var(--text-dim); text-transform: uppercase;
+  }
+  .ip-info .ip-meta span strong {
+    color: var(--gold-light); font-weight: 400; margin-left: 6px;
+  }
+  .showcase-item .ip-gradient {
+    position: absolute; inset: 0; pointer-events: none;
+    transition: opacity 0.5s;
+  }
+  .s1 .ip-gradient { background: radial-gradient(circle at 30% 30%, rgba(196,58,58,0.12), transparent 65%); }
+  .s2 .ip-gradient { background: radial-gradient(circle at 70% 30%, rgba(212,168,83,0.12), transparent 65%); }
+  .s3 .ip-gradient { background: radial-gradient(circle at 50% 30%, rgba(58,191,143,0.12), transparent 65%); }
+
+
+  /* ====== AI PIPELINE ====== */
+  .pipeline-wrap{
+    display:grid;grid-template-columns:280px 1fr;gap:64px;align-items:start;
+   }
+  .pipeline-sidebar{position:sticky;top:120px;}
+  .pipeline-sidebar .sec-label{margin-bottom:12px;}
+  .pipeline-sidebar h2{
+    font-family:'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', STSong, serif;font-weight:900;
+    color:#fff;line-height:1.3;margin-bottom:20px;
+  }
+  .pipeline-sidebar h2 .gold{color:var(--gold);}
+  .pipeline-sidebar p{font-size:14px;line-height:1.9;color:var(--text-dim);}
+  .pipeline-flow{display:flex;flex-direction:column;gap:1px;}
+  .pipe-step{
+    display:grid;grid-template-columns:60px 1fr;gap:32px;
+    background:var(--surface);padding:36px 32px;
+    border:1px solid transparent;transition:all 0.4s;position:relative;
+  }
+  .pipe-step:hover{border-color:var(--border-gold);background:rgba(201,168,76,0.02);}
+  .pipe-num{
+    font-family:'Playfair Display',serif;font-size:28px;font-weight:900;
+    color:rgba(201,168,76,0.2);line-height:1;
+  }
+  .pipe-step:hover .pipe-num{color:var(--gold);}
+  .pipe-content h4{font-size:16px;font-weight:600;color:#fff;margin-bottom:8px;}
+  .pipe-content p{font-size:13px;line-height:1.7;color:var(--text-dim);}
+  .pipe-tags{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
+  .pipe-tag{
+    padding:4px 12px;border:1px solid var(--border);
+    font-size:10px;letter-spacing:1px;color:var(--text-dim);
+  }
+  .pipe-step:hover .pipe-tag{border-color:var(--border-gold);color:var(--gold-dim);}
+
+  /* ====== ADVANTAGES ====== */
+  .adv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border); margin-top: 64px;}
+  .adv-card{
+    background:var(--surface);padding:56px 40px;transition:all 0.4s;
+  }
+  .adv-card:hover{background:rgba(201,168,76,0.02);}
+  .adv-icon{
+    width:48px;height:48px;margin-bottom:24px;
+    color:var(--gold-dim);
+    transition:color 0.4s, transform 0.4s;
+  }
+  .adv-icon svg{width:100%;height:100%;display:block;}
+  .adv-card:hover .adv-icon{
+    color:var(--gold-light);
+    transform:translateY(-3px);
+  }
+  .adv-card h3{
+    font-family:'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', STSong, serif;font-size:18px;font-weight:700;
+    color:#fff;margin-bottom:12px;
+  }
+  .adv-card p{font-size:13px;line-height:1.8;color:var(--text-dim);}
+
+  /* ====== CTA ====== */
+  .cta-section {
+    border-top: 1px solid var(--ghost);
+    text-align: center;
+    padding: 160px 48px;
+    position: relative;
+  }
+  .cta-section .cta-glow {
+    position: absolute; top: 50%; left: 50%;
+    width: 600px; height: 400px;
+    transform: translate(-50%,-50%);
+    background: radial-gradient(ellipse, rgba(212,168,83,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-section h2 {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', STSong, serif;
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 900; color: #fff; position: relative;
+  }
+  .cta-section .cta-sub {
+    margin-top: 20px; font-size: 15px; color: rgba(184,184,200,0.5);
+    letter-spacing: 1px;
+  }
+  .cta-section .btn-primary { margin-top: 48px; display: inline-block; position: relative; }
+
+  /* ====== CONTACT GRID ====== */
+  .contact-grid {
+    margin: 64px auto 0;
+    max-width: 880px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 16px;
+    position: relative;
+    text-align: left;
+  }
+  .contact-card {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    padding: 32px 28px;
+    transition: border-color 0.4s, background 0.4s;
+  }
+  .contact-card:hover {
+    border-color: var(--border-gold);
+    background: rgba(212,168,83,0.03);
+  }
+  .contact-wechat {
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center;
+  }
+  .wechat-qr {
+    width: 168px; height: 168px;
+    background: #f5f5ec;
+    padding: 12px;
+    margin-bottom: 20px;
+    color: var(--ink);
+    border-radius: 4px;
+  }
+  .wechat-qr svg { width: 100%; height: 100%; display: block; }
+  .wechat-title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', STSong, serif;
+    font-size: 15px; color: #fff; font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .wechat-id {
+    font-size: 11px; letter-spacing: 2px;
+    color: var(--gold-dim); text-transform: uppercase;
+  }
+  .contact-intents {
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .intent-card {
+    display: grid;
+    grid-template-columns: 28px 1fr auto;
+    gap: 20px;
+    align-items: center;
+    background: var(--glass);
+    border: 1px solid var(--border);
+    padding: 18px 24px;
+    text-decoration: none;
+    transition: border-color 0.4s, background 0.4s, transform 0.4s;
+  }
+  .intent-card:hover {
+    border-color: var(--border-gold);
+    background: rgba(212,168,83,0.04);
+    transform: translateX(4px);
+  }
+  .intent-icon {
+    width: 28px; height: 28px;
+    color: var(--gold-dim);
+    transition: color 0.4s;
+  }
+  .intent-card:hover .intent-icon { color: var(--gold-light); }
+  .intent-icon svg { width: 100%; height: 100%; display: block; }
+  .intent-text h4 {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', STSong, serif;
+    font-size: 15px; font-weight: 700; color: #fff;
+    margin-bottom: 4px;
+    text-align: left;
+  }
+  .intent-text p {
+    font-size: 12px; color: var(--text-dim);
+    letter-spacing: 1px; text-align: left;
+  }
+  .intent-arrow {
+    font-size: 20px; color: var(--gold-dim);
+    transition: color 0.4s, transform 0.4s;
+    font-weight: 300;
+  }
+  .intent-card:hover .intent-arrow {
+    color: var(--gold-light);
+    transform: translateX(3px);
+  }
+  .contact-base {
+    margin-top: 40px;
+    font-size: 13px; color: var(--text-dim);
+    letter-spacing: 1px;
+  }
+  .contact-base a {
+    color: var(--gold);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .contact-base a:hover { color: var(--gold-light); }
+  .contact-base .sep {
+    display: inline-block; margin: 0 12px;
+    color: rgba(255,255,255,0.15);
+  }
+
+  /* ====== FOOTER ====== */
+  footer {
+    border-top: 1px solid var(--ghost);
+    padding: 64px 48px 40px;
+  }
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: flex-start;
+  }
+  .footer-brand .f-logo {
+    font-family:'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', STSong, serif;
+    font-size: 18px; font-weight: 900; color: var(--gold);
+    letter-spacing: 3px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .f-logo span { 
+    font-size: 12px; font-weight: 300; color: var(--mist); letter-spacing: 2px; font-family: 'Outfit'; display: block; margin-top: 2px; 
+  }
+  .f-logo .dot{ 
+    width:6px;height:6px;background:var(--gold);border-radius:50%;
+  }
+  .footer-brand .f-sub {
+    font-size: 11px; color: var(--mist); margin-top: 4px; letter-spacing: 1px;
+  }
+  .footer-brand  .f-desc{
+    font-size:13px;color:var(--text-dim);margin-top:16px;line-height:1.7;
+  }
+  .footer-brand .f-copy {
+    margin-top: 20px; font-size: 11px; color: rgba(184,184,200,0.3);
+  }
+  .footer-cols { display: flex; gap: 80px; }
+  .footer-col h5 {
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold-dim); margin-bottom: 16px;
+  }
+  .footer-col a {
+    display: block; font-size: 13px; color: var(--mist);
+    text-decoration: none; margin-bottom: 10px;
+    transition: color 0.3s;
+  }
+  .footer-col a:hover { color: var(--gold); }
+
+  /* ====== ANIMATIONS ====== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ====== RESPONSIVE ====== */
+  @media (max-width: 900px) {
+    nav {
+      padding: 0 24px;
+      backdrop-filter: none;
+      background: rgba(5,5,8,0.96);
+    }
+    .nav-toggle { display: block; }
+    .nav-links {
+      position: fixed; top: 72px; left: 0; right: 0;
+      flex-direction: column; gap: 0; align-items: stretch;
+      background: rgba(5,5,8,0.98);
+      backdrop-filter: blur(20px);
+      padding: 8px 24px 24px;
+      border-bottom: 1px solid rgba(212,168,83,0.12);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+      max-height: calc(100vh - 72px);
+      overflow-y: auto;
+      opacity: 0;
+      transform: translateY(-8px);
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      z-index: 99;
+    }
+    .nav-links.open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .nav-links a {
+      padding: 18px 0; font-size: 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-links a:last-child { border-bottom: none; }
+    .nav-links a::after { display: none; }
+    .nav-cta {
+      margin-top: 20px;
+      padding: 14px 28px !important;
+      text-align: center;
+      border: 1px solid var(--gold) !important;
+    }
+    .section-pad { padding: 80px 24px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .biz-grid { grid-template-columns: 1fr 1fr; }
+    .about-text { grid-template-columns: 1fr; gap: 32px; }
+    .showcase-row { grid-template-columns: 1fr; }
+    .pipeline-wrap{grid-template-columns:1fr;}
+    .pipeline-sidebar{position:static;}
+    .adv-grid{grid-template-columns:1fr;}
+    .footer-inner { flex-direction: column-reverse; gap: 40px; }
+    .footer-cols { gap: 40px; flex-wrap: wrap; }
+    .hero { padding: 120px 24px 80px; }
+    .cta-section { padding: 100px 24px; }
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 48px;
+    }
+    .wechat-qr { width: 160px; height: 160px; }
+    .intent-card {
+      padding: 16px 20px;
+      grid-template-columns: 24px 1fr auto;
+      gap: 16px;
+    }
+    .intent-icon { width: 24px; height: 24px; }
+  }
+  @media (max-width: 600px) {
+    .biz-grid { grid-template-columns: 1fr; }
+    .hero-bg-glyph {
+      font-size: 32vw;
+      color: rgba(212,168,83,0.04);
+    }
+  }
+
+  /* ====== REDUCED MOTION ====== */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    html { scroll-behavior: auto; }
+    #particle-canvas { display: none; }
+    .scroll-line { animation: none; opacity: 0.6; }
+    .reveal { opacity: 1 !important; transform: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Particle Canvas -->
+<canvas id="particle-canvas"></canvas>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    山海集 <div class="dot"></div>
+    <span>SHANHAIJI.AI</span>
+  </div>
+  <button class="nav-toggle" aria-label="展开菜单" aria-expanded="false" aria-controls="nav-links">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
+    <a href="#about">关于山海集</a>
+    <a href="#business">核心业务</a>
+    <a href="#showcase">IP 展示</a>
+    <a href="#pipeline">AI 能力</a>
+    <a href="#contact" class="nav-cta">联系我们</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-glyph">集</div>
+  <div class="hero-radial"></div>
+  <div class="hero-content">
+    <h1>
+      以<span class="gold">AI</span>之力<br>铸<span class="gold">山海</span>万象
+      <span class="thin">AI-NATIVE IP STUDIO · WHERE STORIES COME ALIVE</span>
+    </h1>
+    <p class="hero-desc">
+      山海集 — AI 原生的 IP 设计与孵化公司。
+      用 AI 重新定义 IP 的创造、生产与商业化全流程，覆盖互动漫剧、虚拟陪伴、IP 游戏与潮玩生态。
+    </p>
+    <div class="hero-buttons">
+      <a class="btn-primary" href="#showcase">IP 探索</a>
+      <a class="btn-ghost" href="#business">了解业务</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-pad">
+    <div class="section-label reveal">About ShanHaiJi.ai</div>
+    <h2 class="section-title reveal">
+      在<span class="gold">技术</span>与<span class="gold">叙事</span>之间<br>
+      创造有灵魂的 IP
+    </h2>
+    <div class="about-grid reveal">
+      <div class="about-stat">
+        <div class="num">3<span class="unit">+</span></div>
+        <div class="label">自研 IP 同步孵化</div>
+      </div>
+      <div class="about-stat">
+        <div class="num">4<span class="unit">+</span></div>
+        <div class="label">业务矩阵全协同</div>
+      </div>
+      <div class="about-stat">
+        <div class="num">10<span class="unit">×</span></div>
+        <div class="label">AI 内容生产倍速</div>
+      </div>
+    </div>
+    <div class="about-text reveal">
+      <p>山海集 — 取『集』之意，汇聚万物。我们相信下一代的 IP 不只是一个角色或一个故事，而是一个可以呼吸、可以生长、可以跨媒介穿梭的数字生命体。从一句台词，到一段剧情；从一只小兽，到一方世界。</p>
+      <p>公司深耕 IP 设计与孵化领域，拥有行业领先的 AI 内容生产能力。从概念设定到角色建模，从互动叙事到商业化落地，我们以 AI 为创作引擎，让创意以更短的周期、更高的密度走向市场，让每一个 IP 都拥有走进现实的能力。</p>
+    </div>
+  </div>
+</section>
+
+<!-- BUSINESS -->
+<section class="business" id="business">
+  <div class="section-pad">
+    <div class="section-label reveal">Business Lines</div>
+    <h2 class="section-title reveal">
+      四大核心<span class="gold">业务矩阵</span>
+    </h2>
+    <p class="section-desc reveal">围绕原创 IP 构建全方位的产品与服务生态，覆盖虚拟与现实消费场景。</p>
+    <div class="biz-grid reveal">
+      <div class="biz-card">
+        <div class="biz-icon" aria-hidden="true">
+          <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 21 L15 9 L23 18"/>
+            <path d="M43 21 L41 9 L33 18"/>
+            <path d="M13 21 C9 30 12 43 28 45 C44 43 47 30 43 21"/>
+            <circle cx="22" cy="28" r="1.4" fill="currentColor" stroke="none"/>
+            <circle cx="34" cy="28" r="1.4" fill="currentColor" stroke="none"/>
+            <path d="M21 36 L24 39 L28 35 L32 39 L35 36"/>
+          </svg>
+        </div>
+        <h3>AI 宠物</h3>
+        <div class="en">AI Virtual Pets</div>
+        <p>基于 AI 大模型的虚拟宠物伙伴，拥有独立性格、记忆系统与情感进化能力，为用户带来真实的陪伴体验。</p>
+      </div>
+      <div class="biz-card">
+        <div class="biz-icon" aria-hidden="true">
+          <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M28 6 L50 28 L28 50 L6 28 Z"/>
+            <path d="M28 16 L40 28 L28 40 L16 28 Z"/>
+            <circle cx="28" cy="28" r="2" fill="currentColor" stroke="none"/>
+            <path d="M28 6 L28 12 M50 28 L44 28 M28 50 L28 44 M6 28 L12 28" stroke-opacity="0.5"/>
+          </svg>
+        </div>
+        <h3>IP 游戏</h3>
+        <div class="en">IP-Driven Games</div>
+        <p>围绕原创 IP 开发沉浸式游戏体验，将角色故事与游戏机制深度融合，构建玩家驱动的叙事宇宙。</p>
+      </div>
+      <div class="biz-card">
+        <div class="biz-icon" aria-hidden="true">
+          <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="16" cy="28" r="9"/>
+            <path d="M13 24 L13 32 L20 28 Z" fill="currentColor" stroke="none"/>
+            <path d="M25 28 Q34 20 42 12"/>
+            <path d="M25 28 L42 28"/>
+            <path d="M25 28 Q34 36 42 44"/>
+            <circle cx="44" cy="12" r="3"/>
+            <circle cx="44" cy="28" r="3"/>
+            <circle cx="44" cy="44" r="3"/>
+          </svg>
+        </div>
+        <h3>AI 互动漫剧</h3>
+        <div class="en">AI Interactive Animation</div>
+        <p>运用 AI 生成与交互技术，打造观众可参与剧情走向的新型影视内容，重新定义观看体验。</p>
+      </div>
+      <div class="biz-card">
+        <div class="biz-icon" aria-hidden="true">
+          <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 22 L28 14 L46 22 L28 30 Z"/>
+            <path d="M10 22 L10 42 L28 50 L46 42 L46 22"/>
+            <path d="M28 30 L28 50" stroke-opacity="0.5"/>
+            <path d="M22 18 L23 11 M34 18 L33 11"/>
+            <circle cx="23" cy="22" r="0.9" fill="currentColor" stroke="none"/>
+            <circle cx="33" cy="22" r="0.9" fill="currentColor" stroke="none"/>
+            <path d="M25 25 L31 25" stroke-opacity="0.6"/>
+          </svg>
+        </div>
+        <h3>潮玩盲盒</h3>
+        <div class="en">Designer Blind Box</div>
+        <p>将数字 IP 落地为实体潮玩，通过盲盒机制激发收集欲，打通虚拟与现实的 IP 消费闭环。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IP SHOWCASE -->
+<section class="showcase" id="showcase">
+  <div class="section-pad">
+    <div class="section-label reveal">IP Universe</div>
+    <h2 class="section-title reveal">
+      自研 <span class="gold">IP</span> 矩阵
+    </h2>
+    <p class="section-desc reveal">每一个 IP 都是一个可以跨媒介生长的世界。从互动漫剧出发，向游戏、潮玩、虚拟陪伴延展。</p>
+    <div class="showcase-row reveal">
+
+      <!-- IP 001: 五行小兽 -->
+      <div class="showcase-item s2">
+        <div class="ip-gradient"></div>
+        <div class="ip-status"><span class="pulse"></span>盲盒生产中 · IN PRODUCTION</div>
+        <div class="ip-visual">
+          <svg viewBox="0 0 240 240" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="120" cy="120" r="105" stroke-dasharray="2 8" opacity="0.35"/>
+            <circle cx="120" cy="120" r="68"/>
+            <path d="M120 52 L182 100 L158 173 L82 173 L58 100 Z" stroke-opacity="0.4"/>
+            <g>
+              <circle cx="120" cy="52" r="20"/>
+              <text x="120" y="58" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="22" font-weight="900" fill="currentColor" stroke="none">金</text>
+            </g>
+            <g>
+              <circle cx="182" cy="100" r="20"/>
+              <text x="182" y="107" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="22" font-weight="900" fill="currentColor" stroke="none">木</text>
+            </g>
+            <g>
+              <circle cx="158" cy="173" r="20"/>
+              <text x="158" y="180" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="22" font-weight="900" fill="currentColor" stroke="none">水</text>
+            </g>
+            <g>
+              <circle cx="82" cy="173" r="20"/>
+              <text x="82" y="180" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="22" font-weight="900" fill="currentColor" stroke="none">火</text>
+            </g>
+            <g>
+              <circle cx="58" cy="100" r="20"/>
+              <text x="58" y="107" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="22" font-weight="900" fill="currentColor" stroke="none">土</text>
+            </g>
+            <circle cx="120" cy="120" r="3" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
+        <div class="ip-info">
+          <div class="ip-tag">Original IP · 002</div>
+          <h3>五行小兽</h3>
+          <div class="ip-en">Wǔ Xíng Beasts</div>
+          <p class="ip-desc">围绕五行文化打造的萌系角色宇宙。盲盒首发系列已进入生产阶段，互动漫剧与游戏等延展产品线同步开发中。</p>
+          <div class="ip-meta">
+            <span>类型<strong>盲盒 · IP 矩阵</strong></span>
+            <span>状态<strong>盲盒生产中</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- IP 002: ChaoPets -->
+      <div class="showcase-item s3">
+        <div class="ip-gradient"></div>
+        <div class="ip-status"><span class="pulse"></span>研发中 · IN DEVELOPMENT</div>
+        <div class="ip-visual">
+          <svg viewBox="0 0 240 240" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="120" cy="120" r="105" stroke-dasharray="2 8" opacity="0.35"/>
+            <circle cx="120" cy="120" r="78"/>
+
+            <path d="M120 64 C 116 56 106 56 106 66 C 106 74 120 84 120 84 C 120 84 134 74 134 66 C 134 56 124 56 120 64 Z"/>
+
+            <ellipse cx="120" cy="148" rx="32" ry="20"/>
+            <circle cx="120" cy="120" r="22"/>
+            <path d="M105 105 L108 94 L116 107"/>
+            <path d="M135 105 L132 94 L124 107"/>
+            <circle cx="113" cy="121" r="1.6" fill="currentColor" stroke="none"/>
+            <circle cx="127" cy="121" r="1.6" fill="currentColor" stroke="none"/>
+            <path d="M118 128 Q120 130 122 128"/>
+            <path d="M150 150 Q 174 144 170 118 Q 166 105 156 106"/>
+
+            <circle cx="120" cy="14" r="3" fill="currentColor" stroke="none"/>
+            <circle cx="226" cy="120" r="3" fill="currentColor" stroke="none"/>
+            <circle cx="120" cy="226" r="3" fill="currentColor" stroke="none"/>
+            <circle cx="14" cy="120" r="3" fill="currentColor" stroke="none"/>
+            <circle cx="195" cy="45" r="1.5" fill="currentColor" stroke="none" opacity="0.5"/>
+            <circle cx="45" cy="45" r="1.5" fill="currentColor" stroke="none" opacity="0.5"/>
+            <circle cx="195" cy="195" r="1.5" fill="currentColor" stroke="none" opacity="0.5"/>
+            <circle cx="45" cy="195" r="1.5" fill="currentColor" stroke="none" opacity="0.5"/>
+
+            <text x="120" y="205" text-anchor="middle" font-family="Outfit" font-size="9" letter-spacing="5" fill="currentColor" stroke="none" opacity="0.7">IDLE · COMPANION</text>
+          </svg>
+        </div>
+        <div class="ip-info">
+          <div class="ip-tag">Original IP · 003</div>
+          <h3>ChaoPets</h3>
+          <div class="ip-en">AI Idle Pet Game</div>
+          <p class="ip-desc">放置类 AI 宠物养成游戏。融合情感陪伴与旅行式探索玩法，AI 宠物拥有独立人格与记忆，会在你不在的时光里独自冒险，带回属于你们的故事。</p>
+          <div class="ip-meta">
+            <span>类型<strong>AI 养成游戏</strong></span>
+            <span>状态<strong>研发中</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- IP 003: 我的 AI 实习男友 -->
+      <div class="showcase-item s1">
+        <div class="ip-gradient"></div>
+        <div class="ip-status"><span class="pulse"></span>制作中 · IN PRODUCTION</div>
+        <div class="ip-visual">
+          <svg viewBox="0 0 240 240" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="120" cy="120" r="105" stroke-dasharray="2 8" opacity="0.35"/>
+            <circle cx="120" cy="120" r="78" stroke-dasharray="1 4" opacity="0.2"/>
+            <path d="M120 92 C108 72 78 72 78 102 C78 130 120 152 120 152 C120 152 162 130 162 102 C162 72 132 72 120 92 Z"/>
+            <path d="M82 108 Q60 105 48 85"/>
+            <path d="M82 132 Q60 148 50 175"/>
+            <path d="M158 108 Q180 105 192 85"/>
+            <path d="M158 132 Q180 148 190 175"/>
+            <circle cx="48" cy="85" r="4" fill="currentColor" stroke="none"/>
+            <circle cx="50" cy="175" r="4" fill="currentColor" stroke="none"/>
+            <circle cx="192" cy="85" r="4" fill="currentColor" stroke="none"/>
+            <circle cx="190" cy="175" r="4" fill="currentColor" stroke="none"/>
+            <circle cx="48" cy="85" r="11" stroke-opacity="0.5"/>
+            <circle cx="50" cy="175" r="11" stroke-opacity="0.5"/>
+            <circle cx="192" cy="85" r="11" stroke-opacity="0.5"/>
+            <circle cx="190" cy="175" r="11" stroke-opacity="0.5"/>
+            <text x="120" y="200" text-anchor="middle" font-family="Outfit" font-size="9" letter-spacing="6" fill="currentColor" stroke="none" opacity="0.7">CHOOSE YOUR PATH</text>
+          </svg>
+        </div>
+        <div class="ip-info">
+          <div class="ip-tag">Original IP · 001</div>
+          <h3>我的 AI 实习男友</h3>
+          <div class="ip-en">My AI Intern Boyfriend</div>
+          <p class="ip-desc">AI 原生互动漫剧。观众的每一个选择都将改变剧情走向，由 AI 生成的对话与分支让每一次观看都是独一无二的恋爱体验。</p>
+          <div class="ip-meta">
+            <span>类型<strong>AI 互动漫剧</strong></span>
+            <span>状态<strong>制作中</strong></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- AI PIPELINE -->
+<section id="pipeline">
+  <div class="section-pad">
+    <div class="pipeline-wrap">
+      <div class="pipeline-sidebar reveal">
+        <div class="section-label">AI Production Pipeline</div>
+        <h2 class="section-title reveal">全链路<br><span class="gold">AI 生产力</span></h2>
+        <p>从灵感到落地的每个环节，AI 都是我们的核心生产力。不是辅助工具，而是创作引擎。</p>
+      </div>
+      <div class="pipeline-flow reveal">
+        <div class="pipe-step">
+          <div class="pipe-num">01</div>
+          <div class="pipe-content">
+            <h4>概念生成 Ideation</h4>
+            <p>AI 辅助世界观构建与角色概念快速迭代，将创意从灵感加速到可执行方案。</p>
+            <div class="pipe-tags"><span class="pipe-tag">LLM</span><span class="pipe-tag">World Building</span><span class="pipe-tag">Concept Art</span></div>
+          </div>
+        </div>
+        <div class="pipe-step">
+          <div class="pipe-num">02</div>
+          <div class="pipe-content">
+            <h4>视觉设计 Visual Design</h4>
+            <p>AI 图像生成结合人工精修，确保风格统一与品质管控，实现工业化视觉产出。</p>
+            <div class="pipe-tags"><span class="pipe-tag">Diffusion</span><span class="pipe-tag">Style Control</span><span class="pipe-tag">Quality Assurance</span></div>
+          </div>
+        </div>
+        <div class="pipe-step">
+          <div class="pipe-num">03</div>
+          <div class="pipe-content">
+            <h4>内容制作 Production</h4>
+            <p>AI 驱动动画、漫画与交互剧情内容的批量化生产，突破传统产能瓶颈。</p>
+            <div class="pipe-tags"><span class="pipe-tag">Animation</span><span class="pipe-tag">Comics</span><span class="pipe-tag">Interactive Engine</span></div>
+          </div>
+        </div>
+        <div class="pipe-step">
+          <div class="pipe-num">04</div>
+          <div class="pipe-content">
+            <h4>智能交互 Intelligence</h4>
+            <p>AI 人格引擎赋予 IP 角色自主对话与情感记忆能力，创造有温度的数字生命。</p>
+            <div class="pipe-tags"><span class="pipe-tag">Persona Engine</span><span class="pipe-tag">Memory System</span><span class="pipe-tag">Emotion AI</span></div>
+          </div>
+        </div>
+        <div class="pipe-step">
+          <div class="pipe-num">05</div>
+          <div class="pipe-content">
+            <h4>商业落地 Commercialization</h4>
+            <p>全渠道 IP 分发，虚实联动运营策略，最大化 IP 商业价值。</p>
+            <div class="pipe-tags"><span class="pipe-tag">Distribution</span><span class="pipe-tag">Merch</span><span class="pipe-tag">Cross-media</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADVANTAGES -->
+<section id="strengths">
+  <div class="section-pad">
+    <div class="section-label reveal">Why Shanhaiji</div>
+    <h2 class="section-title reveal">选择<span class="gold">山海集</span>的理由</h2>
+    <div class="adv-grid reveal">
+      <div class="adv-card">
+        <div class="adv-icon" aria-hidden="true">
+          <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M28 16 L38 22 L38 34 L28 40 L18 34 L18 22 Z"/>
+            <circle cx="28" cy="28" r="2.4"/>
+            <circle cx="28" cy="28" r="0.9" fill="currentColor" stroke="none"/>
+            <path d="M28 16 L28 8"/>
+            <path d="M28 40 L28 48"/>
+            <path d="M38 22 L44 18"/>
+            <path d="M38 34 L44 38"/>
+            <path d="M18 22 L12 18"/>
+            <path d="M18 34 L12 38"/>
+            <circle cx="28" cy="8" r="1.8"/>
+            <circle cx="28" cy="48" r="1.8"/>
+            <circle cx="44" cy="18" r="1.8"/>
+            <circle cx="44" cy="38" r="1.8"/>
+            <circle cx="12" cy="18" r="1.8"/>
+            <circle cx="12" cy="38" r="1.8"/>
+          </svg>
+        </div>
+        <h3>AI 原生团队</h3>
+        <p>团队深度掌握前沿 AI 技术栈，从底层模型到应用层的全链路 AI 能力，非简单的工具调用。</p>
+      </div>
+      <div class="adv-card">
+        <div class="adv-icon" aria-hidden="true">
+          <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M28 12 Q 44 12 44 28"/>
+            <path d="M40 24 L44 28 L48 24"/>
+            <path d="M44 28 Q 44 44 28 44"/>
+            <path d="M32 40 L28 44 L32 48"/>
+            <path d="M28 44 Q 12 44 12 28"/>
+            <path d="M16 32 L12 28 L8 32"/>
+            <path d="M12 28 Q 12 12 28 12"/>
+            <path d="M24 16 L28 12 L24 8"/>
+            <circle cx="28" cy="28" r="4"/>
+            <circle cx="28" cy="28" r="1.2" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
+        <h3>IP 全生命周期</h3>
+        <p>从概念孵化、视觉设计、内容生产到商业变现的完整闭环，一站式 IP 运营能力。</p>
+      </div>
+      <div class="adv-card">
+        <div class="adv-icon" aria-hidden="true">
+          <svg viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="20" cy="28" r="14" stroke-dasharray="2 3"/>
+            <circle cx="36" cy="28" r="14"/>
+            <circle cx="28" cy="28" r="3.5" fill="currentColor" stroke="none"/>
+            <circle cx="6" cy="28" r="1.6"/>
+            <circle cx="50" cy="28" r="1.6"/>
+            <circle cx="28" cy="10" r="1.6"/>
+            <circle cx="28" cy="46" r="1.6"/>
+          </svg>
+        </div>
+        <h3>虚实融合生态</h3>
+        <p>数字 IP 与实体潮玩联动，线上内容与线下消费打通，构建可持续增长的 IP 商业模型。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-glow"></div>
+  <h2 class="reveal">共创<span style="color:var(--gold)">山海</span>新纪元</h2>
+  <p class="cta-sub reveal">寻找合作伙伴 · IP 联名 · 投资洽谈</p>
+
+  <div class="contact-grid reveal">
+    <!-- 左：微信二维码（占位 SVG，部署前替换为真实二维码图片） -->
+    <div class="contact-card contact-wechat">
+      <div class="wechat-qr">
+        <svg viewBox="0 0 80 80" fill="currentColor" aria-hidden="true">
+          <path d="M3 3h22v22H3zM7 7v14h14V7zM10 10h8v8h-8z" fill-rule="evenodd"/>
+          <path d="M55 3h22v22H55zM59 7v14h14V7zM62 10h8v8h-8z" fill-rule="evenodd"/>
+          <path d="M3 55h22v22H3zM7 59v14h14V59zM10 62h8v8h-8z" fill-rule="evenodd"/>
+          <path d="M37 37h6v6h-6zM39 39h2v2h-2z" fill-rule="evenodd"/>
+          <rect x="29" y="3" width="3" height="3"/><rect x="35" y="3" width="3" height="3"/><rect x="47" y="3" width="3" height="3"/>
+          <rect x="29" y="9" width="3" height="3"/><rect x="41" y="9" width="3" height="3"/>
+          <rect x="35" y="15" width="3" height="3"/><rect x="47" y="15" width="3" height="3"/>
+          <rect x="29" y="21" width="3" height="3"/><rect x="41" y="21" width="3" height="3"/><rect x="47" y="21" width="3" height="3"/>
+          <rect x="3" y="29" width="3" height="3"/><rect x="15" y="29" width="3" height="3"/>
+          <rect x="9" y="35" width="3" height="3"/><rect x="21" y="35" width="3" height="3"/>
+          <rect x="3" y="41" width="3" height="3"/><rect x="21" y="41" width="3" height="3"/>
+          <rect x="15" y="47" width="3" height="3"/>
+          <rect x="3" y="53" width="3" height="3"/>
+          <rect x="59" y="29" width="3" height="3"/><rect x="65" y="29" width="3" height="3"/>
+          <rect x="71" y="35" width="3" height="3"/>
+          <rect x="59" y="41" width="3" height="3"/>
+          <rect x="71" y="47" width="3" height="3"/>
+          <rect x="59" y="53" width="3" height="3"/><rect x="65" y="53" width="3" height="3"/>
+          <rect x="29" y="59" width="3" height="3"/><rect x="41" y="59" width="3" height="3"/>
+          <rect x="29" y="65" width="3" height="3"/><rect x="47" y="65" width="3" height="3"/>
+          <rect x="35" y="71" width="3" height="3"/>
+          <rect x="29" y="35" width="3" height="3"/><rect x="47" y="35" width="3" height="3"/>
+          <rect x="35" y="29" width="3" height="3"/><rect x="35" y="47" width="3" height="3"/>
+          <rect x="47" y="47" width="3" height="3"/><rect x="41" y="47" width="3" height="3"/>
+        </svg>
+      </div>
+      <div class="wechat-title">微信扫码联系</div>
+      <div class="wechat-id">WeChat · shanhaiji_ai</div>
+    </div>
+
+    <!-- 右：4 个意向入口 -->
+    <div class="contact-intents">
+      <a class="intent-card" href="mailto:contact@shanhaiji.ai?subject=%E3%80%90IP%20%E8%81%94%E5%90%8D%E3%80%91%E5%90%88%E4%BD%9C%E6%84%8F%E5%90%91">
+        <div class="intent-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="16" r="8"/>
+            <circle cx="21" cy="16" r="8"/>
+            <circle cx="16" cy="16" r="2.2" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
+        <div class="intent-text">
+          <h4>IP 联名 / 商务合作</h4>
+          <p>品牌 · 内容方 · 渠道方</p>
+        </div>
+        <div class="intent-arrow" aria-hidden="true">→</div>
+      </a>
+      <a class="intent-card" href="mailto:contact@shanhaiji.ai?subject=%E3%80%90%E6%8A%95%E8%B5%84%E3%80%91%E6%B4%BD%E8%B0%88">
+        <div class="intent-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 22 L12 15 L18 19 L27 8"/>
+            <path d="M21 8 L27 8 L27 14"/>
+            <circle cx="5" cy="22" r="1.5" fill="currentColor" stroke="none"/>
+            <circle cx="12" cy="15" r="1.5" fill="currentColor" stroke="none"/>
+            <circle cx="18" cy="19" r="1.5" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
+        <div class="intent-text">
+          <h4>投资洽谈</h4>
+          <p>FA · 机构 · 战略投资人</p>
+        </div>
+        <div class="intent-arrow" aria-hidden="true">→</div>
+      </a>
+      <a class="intent-card" href="mailto:contact@shanhaiji.ai?subject=%E3%80%90%E6%8B%9B%E8%81%98%E3%80%91%E5%80%99%E9%80%89%E4%BA%BA%E6%8A%95%E9%80%92">
+        <div class="intent-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="13" cy="11" r="5"/>
+            <path d="M5 26 C 5 20 9 17 13 17 C 17 17 21 20 21 26"/>
+            <path d="M25 8 L25 14 M22 11 L28 11"/>
+          </svg>
+        </div>
+        <div class="intent-text">
+          <h4>加入山海集</h4>
+          <p>AI 工程 · IP 创作 · 增长</p>
+        </div>
+        <div class="intent-arrow" aria-hidden="true">→</div>
+      </a>
+      <a class="intent-card" href="mailto:contact@shanhaiji.ai?subject=%E3%80%90%E5%AA%92%E4%BD%93%E3%80%91%E9%87%87%E8%AE%BF%20%2F%20%E6%8A%A5%E9%81%93">
+        <div class="intent-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 13 L5 19 L10 19 L22 25 L22 7 L10 13 Z"/>
+            <path d="M25 13 Q 28 16 25 19"/>
+            <path d="M10 13 L10 19"/>
+          </svg>
+        </div>
+        <div class="intent-text">
+          <h4>媒体 / 报道</h4>
+          <p>采访 · 内容合作 · 行业发声</p>
+        </div>
+        <div class="intent-arrow" aria-hidden="true">→</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="contact-base reveal">
+    或直接邮件 <a href="mailto:contact@shanhaiji.ai">contact@shanhaiji.ai</a>
+    <span class="sep">·</span>
+    24h 内回复
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="f-logo">
+        山海集 <div class="dot"></div>
+        <span>SHANHAIJI.AI</span>
+      </div>
+      <div class="f-sub">SHANHAIJI CREATIVE TECHNOLOGY</div>
+      <p class="f-desc">AI 原生的 IP 设计与孵化公司，<br>以技术重塑文化创意产业。</p>
+      <div class="f-copy">© 2026 山海集（深圳）文化创意科技有限公司 · All Rights Reserved</div>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h5>业务</h5>
+        <a href="#">AI 宠物</a>
+        <a href="#">IP 游戏</a>
+        <a href="#">AI 互动漫剧</a>
+        <a href="#">潮玩盲盒</a>
+      </div>
+      <div class="footer-col">
+        <h5>公司</h5>
+        <a href="#">关于我们</a>
+        <a href="#">联系方式</a>
+      </div>
+      <div class="footer-col">
+        <h5>关注</h5>
+        <a href="#">微信公众号</a>
+        <a href="#">微博</a>
+        <a href="#">抖音</a>
+        <a href="#">小红书</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ====== Mobile Nav ======
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelector('.nav-links');
+if (navToggle && navLinks) {
+  const setMenu = (open) => {
+    navToggle.classList.toggle('open', open);
+    navLinks.classList.toggle('open', open);
+    navToggle.setAttribute('aria-expanded', open);
+    navToggle.setAttribute('aria-label', open ? '收起菜单' : '展开菜单');
+  };
+  navToggle.addEventListener('click', () => {
+    setMenu(!navToggle.classList.contains('open'));
+  });
+  navLinks.addEventListener('click', (e) => {
+    if (e.target.tagName === 'A') setMenu(false);
+  });
+  document.addEventListener('click', (e) => {
+    if (navLinks.classList.contains('open') &&
+        !navLinks.contains(e.target) &&
+        !navToggle.contains(e.target)) {
+      setMenu(false);
+    }
+  });
+}
+
+// ====== Motion Preferences ======
+const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+// ====== Particle System ======
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+let w, h;
+let rafId = null;
+
+function resize() {
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resize);
+resize();
+
+class Particle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * w;
+    this.y = Math.random() * h;
+    this.size = Math.random() * 1.5 + 0.5;
+    this.speedX = (Math.random() - 0.5) * 0.3;
+    this.speedY = (Math.random() - 0.5) * 0.3;
+    this.opacity = Math.random() * 0.5 + 0.1;
+    this.gold = Math.random() > 0.7;
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    if (this.x < 0 || this.x > w || this.y < 0 || this.y > h) this.reset();
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = this.gold
+      ? `rgba(212,168,83,${this.opacity})`
+      : `rgba(184,184,200,${this.opacity * 0.5})`;
+    ctx.fill();
+  }
+}
+
+const particleCount = (window.innerWidth < 600 || (navigator.hardwareConcurrency || 4) < 4) ? 30 : 80;
+for (let i = 0; i < particleCount; i++) particles.push(new Particle());
+
+function animate() {
+  ctx.clearRect(0, 0, w, h);
+  particles.forEach(p => { p.update(); p.draw(); });
+  rafId = requestAnimationFrame(animate);
+}
+
+function startParticles() {
+  if (motionQuery.matches) return;
+  if (rafId !== null) return;
+  animate();
+}
+function stopParticles() {
+  if (rafId !== null) {
+    cancelAnimationFrame(rafId);
+    rafId = null;
+  }
+}
+
+startParticles();
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) stopParticles();
+  else startParticles();
+});
+
+motionQuery.addEventListener('change', () => {
+  if (motionQuery.matches) {
+    stopParticles();
+    ctx.clearRect(0, 0, w, h);
+  } else {
+    startParticles();
+  }
+});
+
+// ====== Scroll Reveal ======
+const reveals = document.querySelectorAll('.reveal');
+if (motionQuery.matches) {
+  reveals.forEach(el => el.classList.add('visible'));
+} else {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(el => observer.observe(el));
+}
+</script>
+
+</body>
+</html>
