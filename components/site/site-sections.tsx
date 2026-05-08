@@ -8,7 +8,7 @@ import { Card } from "@/components/ui/card";
 
 export function HeroSection({ compact = false }: { compact?: boolean }) {
   return (
-    <section className={`hero ${compact ? "page-hero" : ""}`}>
+    <section className={`hero ${compact ? "page-hero" : "home-hero"}`}>
       <div className="hero-bg-glyph">集</div>
       <div className="hero-radial" />
       <div className="hero-content">
