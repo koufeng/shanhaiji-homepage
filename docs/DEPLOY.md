@@ -8,10 +8,10 @@
 - **Root Directory**: 仓库根目录
 - **Install Command**: 自动识别 `package-lock.json`，使用 npm
 - **Build Command**: `npm run build`
-- **Output Directory**: `out`
+- **Output Directory**: 不要覆盖，保持 Vercel Next.js 默认值
 - **Node.js Version**: `22.x`（由 `package.json#engines.node` 指定）
 
-注意：不要在 Vercel 中使用 `bash build.sh` / `dist`。`build.sh` 只为 Cloudflare Pages 保留。
+注意：不要在 Vercel 中使用 `bash build.sh` / `dist`，也不要把 Output Directory 改成 `out`。`build.sh` 只为 Cloudflare Pages 保留。
 
 ---
 

@@ -80,10 +80,10 @@ bash build.sh
 - **Framework Preset**: `Next.js`
 - **Install Command**: 自动识别 `package-lock.json`，使用 npm
 - **Build Command**: `npm run build`
-- **Output Directory**: `out`
+- **Output Directory**: 不要覆盖，保持 Vercel Next.js 默认值
 - **Node.js**: `22.x`，由 `package.json#engines.node` 指定
 
-导入 Git 仓库到 Vercel 后，Root Directory 保持仓库根目录即可。不要把 Vercel 的 Build Command 改成 `bash build.sh`，那是 Cloudflare Pages 的兼容脚本。
+导入 Git 仓库到 Vercel 后，Root Directory 保持仓库根目录即可。不要把 Vercel 的 Build Command 改成 `bash build.sh`，也不要把 Output Directory 改成 `out`；`out/` 是 Next 静态导出目录，但 Vercel 的 Next.js 适配器需要读取 `.next/` 中的构建清单。
 
 ## 部署到 Cloudflare Pages
 
