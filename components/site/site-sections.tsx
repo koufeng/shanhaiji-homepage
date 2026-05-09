@@ -1,10 +1,18 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { ReactNode } from "react";
 
-import { WechatQrPlaceholder } from "@/components/site/icons";
 import { businesses, contactIntents, ips, pipeline, stats, strengths } from "@/components/site/content";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+
+function ArrowIcon() {
+  return (
+    <span className="button-icon" aria-hidden="true">
+      <Image src="/images/arrow-right.svg" alt="" width={20} height={20} />
+    </span>
+  );
+}
 
 export function HeroSection({ compact = false }: { compact?: boolean }) {
   return (
@@ -24,11 +32,17 @@ export function HeroSection({ compact = false }: { compact?: boolean }) {
         </p>
         {!compact ? (
           <div className="hero-buttons">
-            <Button asChild size="lg" className="rounded-none px-10 tracking-[3px]">
-              <Link href="/ips/">IP 探索</Link>
+            <Button asChild size="lg" className="hero-button hero-button-dark">
+              <Link href="/ips/">
+                <span>IP 探索</span>
+                <ArrowIcon />
+              </Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="rounded-none border-white/15 bg-transparent px-10 text-mist tracking-[3px] hover:border-gold hover:bg-transparent hover:text-gold">
-              <Link href="/business/">了解业务</Link>
+            <Button asChild size="lg" variant="outline" className="hero-button hero-button-gradient">
+              <Link href="/business/">
+                <span>了解业务</span>
+                <ArrowIcon />
+              </Link>
             </Button>
           </div>
         ) : null}
@@ -67,7 +81,7 @@ export function PageHero({
 
 export function AboutSection() {
   return (
-    <section className="section-border" id="about">
+    <section className="section-border about-section" id="about">
       <div className="section-pad">
         <div className="section-label reveal">About ShanHaiJi.ai</div>
         <h2 className="section-title reveal">
@@ -114,9 +128,7 @@ export function BusinessSection() {
         <div className="biz-grid reveal">
           {businesses.map((item) => (
             <Card key={item.title} className="biz-card rounded-none shadow-none">
-              <div className="line-icon" aria-hidden="true">
-                {item.icon}
-              </div>
+              <div className="biz-num">{item.num}</div>
               <h3>{item.title}</h3>
               <div className="en">{item.en}</div>
               <p>{item.desc}</p>
@@ -142,16 +154,21 @@ export function IpSection() {
         <div className="showcase-row reveal">
           {ips.map((item) => (
             <Card key={item.title} className={`showcase-item ${item.className} rounded-none shadow-none`}>
-              <div className="ip-gradient" />
-              <div className="ip-status">
-                <span className="pulse" />
-                {item.status}
-              </div>
-              <div className="ip-visual">{item.visual}</div>
               <div className="ip-info">
                 <div className="ip-tag">{item.tag}</div>
                 <h3>{item.title}</h3>
                 <div className="ip-en">{item.en}</div>
+                <div className="ip-visual">
+                  {item.imageSrc ? (
+                    <Image src={item.imageSrc} alt={item.title} fill sizes="(max-width: 900px) 100vw, 33vw" />
+                  ) : (
+                    <span>{item.en}</span>
+                  )}
+                </div>
+                <div className="ip-status">
+                  <span className="pulse" />
+                  {item.status}
+                </div>
                 <p className="ip-desc">{item.desc}</p>
                 <div className="ip-meta">
                   <span>
@@ -219,9 +236,7 @@ export function StrengthsSection() {
         <div className="adv-grid reveal">
           {strengths.map((item) => (
             <Card key={item.title} className="adv-card rounded-none border-0 shadow-none">
-              <div className="line-icon" aria-hidden="true">
-                {item.icon}
-              </div>
+              <Image className="why-icon" src={item.iconSrc} alt="" width={50} height={50} aria-hidden="true" />
               <h3>{item.title}</h3>
               <p>{item.desc}</p>
             </Card>
@@ -243,10 +258,10 @@ export function ContactSection() {
       <div className="contact-grid reveal">
         <Card className="contact-card contact-wechat rounded-none shadow-none">
           <div className="wechat-qr">
-            <WechatQrPlaceholder />
+            <Image src="/images/qrcode.png" alt="微信二维码" width={211} height={213} />
           </div>
+          <div className="wechat-id">shanhaiji_ai</div>
           <div className="wechat-title">微信扫码联系</div>
-          <div className="wechat-id">WeChat · shanhaiji_ai</div>
         </Card>
         <div className="contact-intents">
           {contactIntents.map((intent) => (
@@ -255,15 +270,12 @@ export function ContactSection() {
               className="intent-card"
               href={`mailto:contact@shanhaiji.ai?subject=${encodeURIComponent(intent.subject)}`}
             >
-              <div className="line-icon" aria-hidden="true">
-                {intent.icon}
-              </div>
               <div className="intent-text">
                 <h4>{intent.title}</h4>
                 <p>{intent.desc}</p>
               </div>
               <div className="intent-arrow" aria-hidden="true">
-                →
+                <Image src="/images/arrow-right.svg" alt="" width={18} height={18} />
               </div>
             </a>
           ))}
@@ -271,8 +283,6 @@ export function ContactSection() {
       </div>
       <div className="contact-base reveal">
         或直接邮件 <a href="mailto:contact@shanhaiji.ai">contact@shanhaiji.ai</a>
-        <span className="sep">·</span>
-        24h 内回复
       </div>
     </section>
   );
