@@ -3823,6 +3823,400 @@ main:has(.cta-section) + .site-footer {
   }
 }
 
+/* Polish pass requested from latest screenshots. */
+.section-label,
+.about-section .section-label,
+#showcase .section-label,
+#pipeline .section-label,
+#strengths .section-label {
+  font-weight: 300 !important;
+}
+
+.home-hero .hero-button {
+  transition: background 0.28s ease, color 0.28s ease, transform 0.28s ease !important;
+}
+
+.home-hero .hero-button:hover {
+  background: #fff !important;
+  color: var(--brand-accent) !important;
+}
+
+.home-hero .hero-button:hover > span:not(.button-icon),
+.home-hero .hero-button:hover > *:not(.button-icon) {
+  color: var(--brand-accent) !important;
+}
+
+.home-hero .hero-button:hover .button-icon {
+  background: var(--brand-accent-gradient) !important;
+}
+
+.home-hero .hero-button:hover .button-icon img {
+  filter: brightness(0) invert(1);
+}
+
+.nav-links .nav-cta:hover {
+  color: var(--brand-accent-light) !important;
+}
+
+.nav-links .nav-cta:hover::before {
+  background: url("/images/arrow-right-white.svg") center / 20px 20px no-repeat, var(--brand-accent-gradient) !important;
+}
+
+.about-section .about-grid {
+  background:
+    url("/images/add.svg") left bottom / 9px 9px no-repeat,
+    url("/images/add.svg") 33.333% bottom / 9px 9px no-repeat,
+    url("/images/add.svg") 66.666% bottom / 9px 9px no-repeat,
+    url("/images/add.svg") right bottom / 9px 9px no-repeat !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.about-section .about-stat:nth-child(1)::after,
+.about-section .about-stat:nth-child(2)::after,
+.about-section .about-stat:nth-child(3)::after {
+  position: absolute !important;
+  right: -4px !important;
+  bottom: -5px !important;
+  z-index: 2 !important;
+  width: 9px !important;
+  height: 9px !important;
+  background: url("/images/add.svg") center / contain no-repeat !important;
+  content: "" !important;
+}
+
+.about-section .about-stat:nth-child(1)::after {
+  left: -4px !important;
+  right: auto !important;
+}
+
+.about-section .about-stat:nth-child(2)::after {
+  left: -4px !important;
+  right: auto !important;
+}
+
+#strengths .adv-grid {
+  position: relative !important;
+  background: none !important;
+  padding-top: 0 !important;
+}
+
+#strengths .adv-grid::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: var(--brand-accent-gradient);
+  content: "";
+}
+
+#strengths .adv-card {
+  border-top: 0 !important;
+  border-image: none !important;
+  padding: 42px 30px 0 0 !important;
+}
+
+.wechat-id,
+.wechat-title {
+  font-size: 20px !important;
+  line-height: 30px !important;
+}
+
+.site-footer {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.site-footer::before {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 0;
+  height: clamp(88px, 13.4vw, 192px);
+  background: url("/images/shanhaiji-bg.png") center / min(100%, 1421px) auto no-repeat;
+  content: "";
+  opacity: 0.16;
+  pointer-events: none;
+}
+
+.footer-inner {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.footer-col a:hover {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+@media (min-width: 901px) {
+  .site-footer::before {
+    top: -96px;
+  }
+}
+
+@media (max-width: 900px) {
+  .site-footer::before {
+    top: 26%;
+    background-size: 720px auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-footer::before {
+    top: 24%;
+    background-size: 520px auto;
+  }
+}
+
+/* Final visual tuning. */
+.site-nav {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(15px) !important;
+}
+
+.section-label,
+.about-section .section-label,
+#showcase .section-label,
+#pipeline .section-label,
+#strengths .section-label {
+  font-weight: 200 !important;
+  text-transform: uppercase !important;
+}
+
+.about-section .about-grid {
+  overflow: visible !important;
+  background:
+    url("/images/add.svg") left -4px top -5px / 9px 9px no-repeat,
+    url("/images/add.svg") 33.333% -5px / 9px 9px no-repeat,
+    url("/images/add.svg") 66.666% -5px / 9px 9px no-repeat,
+    url("/images/add.svg") right -4px top -5px / 9px 9px no-repeat,
+    url("/images/add.svg") left -4px bottom -5px / 9px 9px no-repeat,
+    url("/images/add.svg") 33.333% calc(100% + 5px) / 9px 9px no-repeat,
+    url("/images/add.svg") 66.666% calc(100% + 5px) / 9px 9px no-repeat,
+    url("/images/add.svg") right -4px bottom -5px / 9px 9px no-repeat !important;
+}
+
+.about-section .about-grid::before,
+.about-section .about-grid::after,
+.about-section .about-stat::before,
+.about-section .about-stat::after {
+  display: none !important;
+}
+
+.wechat-id,
+.wechat-title {
+  font-size: 20px !important;
+  font-weight: 500 !important;
+  line-height: 30px !important;
+}
+
+.site-footer::before {
+  opacity: 0.26 !important;
+}
+
+@media (min-width: 901px) {
+  .cta-section {
+    background-image:
+      radial-gradient(ellipse 88% 58% at 76% 104%, rgba(198, 232, 218, 0.52) 0%, rgba(134, 196, 177, 0.42) 34%, rgba(134, 196, 177, 0) 72%),
+      radial-gradient(ellipse 92% 54% at 78% 88%, rgba(45, 172, 136, 0.52) 0%, rgba(28, 123, 101, 0.34) 44%, rgba(21, 21, 21, 0) 74%),
+      radial-gradient(ellipse 78% 52% at 17% 102%, rgba(42, 173, 140, 0.62) 0%, rgba(26, 123, 102, 0.42) 42%, rgba(21, 21, 21, 0) 75%),
+      linear-gradient(180deg, #151515 0%, #151515 38%, rgba(21, 21, 21, 0.98) 48%, rgba(21, 21, 21, 0.78) 61%, rgba(21, 21, 21, 0.18) 82%, rgba(21, 21, 21, 0) 100%),
+      linear-gradient(180deg, #151515 0%, #151515 48%, #143b34 78%, #7fb2a2 100%) !important;
+  }
+}
+
+/* Fix clipped stat icons and place footer wordmark above the green glow. */
+.about-section .about-grid {
+  overflow: visible !important;
+  background: none !important;
+}
+
+.about-section .about-grid::before,
+.about-section .about-grid::after {
+  position: absolute !important;
+  right: 0 !important;
+  left: 0 !important;
+  z-index: 2 !important;
+  display: block !important;
+  height: 10px !important;
+  background-image:
+    url("/images/add.svg"),
+    url("/images/add.svg"),
+    url("/images/add.svg"),
+    url("/images/add.svg") !important;
+  background-repeat: no-repeat !important;
+  background-position:
+    left center,
+    calc(33.333% - 4.5px) center,
+    calc(66.666% - 4.5px) center,
+    right center !important;
+  background-size: 9px 10px !important;
+  content: "" !important;
+  pointer-events: none !important;
+}
+
+.about-section .about-grid::before {
+  top: -5px !important;
+}
+
+.about-section .about-grid::after {
+  bottom: -5px !important;
+}
+
+.about-section .about-stat::before,
+.about-section .about-stat::after {
+  display: none !important;
+}
+
+.site-footer {
+  isolation: isolate !important;
+}
+
+.site-footer::before {
+  z-index: 1 !important;
+  opacity: 0.42 !important;
+}
+
+.footer-inner {
+  z-index: 2 !important;
+}
+
+/* Stable stat-line icon layout and shared CTA/footer wordmark layer. */
+.about-stats-frame {
+  position: relative !important;
+  margin-top: 102px !important;
+}
+
+.about-stats-frame .about-grid {
+  margin-top: 0 !important;
+}
+
+.about-stat-icons {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 4;
+  display: block;
+  height: 10px;
+  pointer-events: none;
+}
+
+.about-stat-icons-top {
+  top: -5px;
+}
+
+.about-stat-icons-bottom {
+  bottom: -5px;
+}
+
+.about-stat-icons span {
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 9px;
+  height: 10px;
+  background: url("/images/add.svg") center / contain no-repeat;
+}
+
+.about-stat-icons span:nth-child(1) {
+  left: 0;
+}
+
+.about-stat-icons span:nth-child(2) {
+  left: 33.333%;
+  transform: translateX(-50%);
+}
+
+.about-stat-icons span:nth-child(3) {
+  left: 66.666%;
+  transform: translateX(-50%);
+}
+
+.about-stat-icons span:nth-child(4) {
+  right: 0;
+}
+
+.about-section .about-grid::before,
+.about-section .about-grid::after,
+.about-section .about-stat::before,
+.about-section .about-stat::after {
+  display: none !important;
+}
+
+.cta-section {
+  isolation: isolate !important;
+}
+
+.cta-section::before {
+  position: absolute !important;
+  right: 0 !important;
+  bottom: clamp(170px, 13vw, 230px) !important;
+  left: 0 !important;
+  z-index: 1 !important;
+  display: block !important;
+  height: clamp(88px, 13.4vw, 192px) !important;
+  background: url("/images/shanhaiji-bg.png") center / min(100%, 1421px) auto no-repeat !important;
+  content: "" !important;
+  opacity: 1 !important;
+  pointer-events: none !important;
+}
+
+.cta-section > * {
+  z-index: 2 !important;
+}
+
+.site-footer::before {
+  display: none !important;
+}
+
+@media (min-width: 901px) {
+  .cta-section {
+    padding-bottom: clamp(430px, 31vw, 470px) !important;
+    background-image:
+      radial-gradient(ellipse 88% 58% at 76% 104%, rgba(198, 232, 218, 0.31) 0%, rgba(134, 196, 177, 0.25) 34%, rgba(134, 196, 177, 0) 72%),
+      radial-gradient(ellipse 92% 54% at 78% 88%, rgba(45, 172, 136, 0.31) 0%, rgba(28, 123, 101, 0.2) 44%, rgba(21, 21, 21, 0) 74%),
+      radial-gradient(ellipse 78% 52% at 17% 102%, rgba(42, 173, 140, 0.37) 0%, rgba(26, 123, 102, 0.25) 42%, rgba(21, 21, 21, 0) 75%),
+      linear-gradient(180deg, #151515 0%, #151515 38%, rgba(21, 21, 21, 0.98) 48%, rgba(21, 21, 21, 0.78) 61%, rgba(21, 21, 21, 0.18) 82%, rgba(21, 21, 21, 0) 100%),
+      linear-gradient(180deg, #151515 0%, #151515 48%, #143b34 78%, #7fb2a2 100%) !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .about-stats-frame {
+    margin-top: 64px !important;
+  }
+
+  .cta-section::before {
+    bottom: 10px !important;
+    height: 74px !important;
+    background-size: 720px auto !important;
+  }
+
+  .site-footer {
+    background:
+      radial-gradient(ellipse 135% 52% at 50% 100%, rgba(198, 232, 218, 0.47) 0%, rgba(134, 196, 177, 0.35) 32%, rgba(42, 173, 140, 0.17) 54%, rgba(21, 21, 21, 0) 78%),
+      radial-gradient(ellipse 115% 46% at 74% 76%, rgba(45, 172, 136, 0.3) 0%, rgba(28, 123, 101, 0.2) 44%, rgba(21, 21, 21, 0) 78%),
+      radial-gradient(ellipse 110% 42% at 18% 82%, rgba(42, 173, 140, 0.32) 0%, rgba(26, 123, 102, 0.22) 42%, rgba(21, 21, 21, 0) 78%),
+      linear-gradient(180deg, #151515 0%, #151515 22%, #143b34 70%, #7fb2a2 100%) !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .cta-section::before {
+    bottom: 8px !important;
+    height: 58px !important;
+    background-size: 520px auto !important;
+  }
+
+  .site-footer {
+    background:
+      radial-gradient(ellipse 145% 48% at 50% 100%, rgba(198, 232, 218, 0.47) 0%, rgba(134, 196, 177, 0.34) 34%, rgba(42, 173, 140, 0.14) 56%, rgba(21, 21, 21, 0) 80%),
+      radial-gradient(ellipse 120% 42% at 75% 78%, rgba(45, 172, 136, 0.29) 0%, rgba(28, 123, 101, 0.19) 44%, rgba(21, 21, 21, 0) 78%),
+      radial-gradient(ellipse 120% 40% at 16% 82%, rgba(42, 173, 140, 0.31) 0%, rgba(26, 123, 102, 0.2) 42%, rgba(21, 21, 21, 0) 78%),
+      linear-gradient(180deg, #151515 0%, #151515 20%, #143b34 70%, #7fb2a2 100%) !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

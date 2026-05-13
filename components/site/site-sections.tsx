@@ -89,16 +89,30 @@ export function AboutSection() {
           <br />
           创造有灵魂的 IP
         </h2>
-        <div className="about-grid reveal">
-          {stats.map((stat) => (
-            <Card key={stat.label} className="about-stat rounded-none shadow-none">
-              <div className="num">
-                {stat.value}
-                <span className="unit">{stat.unit}</span>
-              </div>
-              <div className="label">{stat.label}</div>
-            </Card>
-          ))}
+        <div className="about-stats-frame reveal">
+          <div className="about-stat-icons about-stat-icons-top" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+            <span />
+          </div>
+          <div className="about-grid">
+            {stats.map((stat) => (
+              <Card key={stat.label} className="about-stat rounded-none shadow-none">
+                <div className="num">
+                  {stat.value}
+                  <span className="unit">{stat.unit}</span>
+                </div>
+                <div className="label">{stat.label}</div>
+              </Card>
+            ))}
+          </div>
+          <div className="about-stat-icons about-stat-icons-bottom" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+            <span />
+          </div>
         </div>
         <div className="about-text reveal">
           <p>
