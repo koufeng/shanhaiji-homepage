@@ -4012,6 +4012,10 @@ main:has(.cta-section) + .site-footer {
   line-height: 30px !important;
 }
 
+.wechat-id {
+  text-decoration: none !important;
+}
+
 .site-footer::before {
   opacity: 0.26 !important;
 }
