@@ -60,14 +60,16 @@ export function HeroSection({ compact = false }: { compact?: boolean }) {
 export function PageHero({
   label,
   title,
-  desc
+  desc,
+  className = ""
 }: {
   label: string;
   title: ReactNode;
   desc: string;
+  className?: string;
 }) {
   return (
-    <section className="hero page-hero">
+    <section className={`hero page-hero ${className}`}>
       <div className="hero-bg-glyph">集</div>
       <div className="hero-radial" />
       <div className="hero-content">
