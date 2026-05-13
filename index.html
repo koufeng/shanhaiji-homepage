@@ -46,10 +46,14 @@
   :root {
     --ink: #0a0a0f;
     --void: #050508;
-    --gold: #d4a853;
-    --gold-light: #f0d58c;
-    --gold-dim: #8a6d2b;
-    --gold-glow: rgba(201,168,76,0.12);
+    --brand-accent: #1e977f;
+    --brand-accent-light: #b0f0dd;
+    --brand-accent-dim: rgba(30,151,127,0.68);
+    --brand-accent-gradient: linear-gradient(90deg, #1e977f 0%, #b0f0dd 100%);
+    --gold: var(--brand-accent);
+    --gold-light: var(--brand-accent-light);
+    --gold-dim: var(--brand-accent-dim);
+    --gold-glow: rgba(30,151,127,0.12);
     --crimson: #c43a3a;
     --jade: #3abf8f;
     --mist: #b8b8c8;
@@ -59,7 +63,7 @@
     --text: #c8c8d4;
     --text-dim: rgba(200,200,212,0.45);
     --border: rgba(255,255,255,0.06);
-    --border-gold: rgba(201,168,76,0.15);
+    --border-gold: rgba(30,151,127,0.18);
   }
 
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -78,8 +82,6 @@
     cursor: default;
   }
 
-  ::selection { background: var(--gold); color: var(--ink); }
-
   /* ====== CANVAS BG ====== */
   #particle-canvas {
     position: fixed; top:0; left:0; width:100%; height:100%;
@@ -94,12 +96,12 @@
     display: flex; justify-content: space-between; align-items: center;
     backdrop-filter: blur(20px);
     background: rgba(5,5,8,0.7);
-    border-bottom: 1px solid rgba(212,168,83,0.1);
+    border-bottom: 1px solid rgba(30,151,127,0.1);
     transition: all 0.4s;
   }
   .nav-logo {
     font-family:'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', STSong, serif;font-size:20px;font-weight:900;
-    color:var(--gold);letter-spacing:3px;
+    color:var(--brand-accent);letter-spacing:3px;
     display:flex;align-items:center;gap:12px;
   }
   .nav-logo span { font-size: 12px; font-weight: 300; color: var(--mist); letter-spacing: 2px; font-family: 'Outfit'; display: block; margin-top: 2px; }
@@ -153,7 +155,7 @@
     transform: translate(-50%, -50%);
     font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', STSong, serif;
     font-size: 38vw; font-weight: 900;
-    color: rgba(212,168,83,0.06);
+    color: rgba(30,151,127,0.06);
     pointer-events: none; user-select: none;
     line-height: 1;
   }
@@ -161,7 +163,7 @@
     position: absolute; top: 50%; left: 50%;
     width: 800px; height: 800px;
     transform: translate(-50%,-50%);
-    background: radial-gradient(circle, rgba(212,168,83,0.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(30,151,127,0.08) 0%, transparent 70%);
     pointer-events: none;
   }
   .hero-content { position: relative; z-index: 2; max-width: 900px; }
@@ -172,7 +174,13 @@
     color: #fff;
     animation: fadeUp 1s ease 0.4s both;
   }
-  .hero h1 .gold { color: var(--gold); }
+  .gold {
+    background: var(--brand-accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero h1 .gold { color: transparent; }
   .hero h1 .thin {
     font-weight: 400; font-family: 'Outfit';
     font-size: clamp(18px, 2.5vw, 32px);
@@ -193,7 +201,7 @@
     font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
     border: none; cursor: pointer; transition: all 0.3s; text-decoration: none;
   }
-  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(212,168,83,0.25); }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(30,151,127,0.25); }
   .btn-ghost {
     padding: 16px 40px; background: transparent; color: var(--mist);
     font-size: 13px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase;
@@ -225,7 +233,7 @@
     font-size: clamp(28px, 4vw, 48px);
     font-weight: 900; color: #fff; line-height: 1.3;
   }
-  .section-title .gold { color: var(--gold); }
+  .section-title .gold { color: transparent; }
   .section-desc{ font-size:14px; line-height:1.9; color:var(--text-dim); max-width:460px; margin-top: 16px; }
 
   /* ====== ABOUT ====== */
@@ -240,7 +248,7 @@
     border: 1px solid rgba(255,255,255,0.04);
     transition: all 0.4s;
   }
-  .about-stat:hover { background: rgba(212,168,83,0.05); border-color: rgba(212,168,83,0.15); }
+  .about-stat:hover { background: rgba(30,151,127,0.05); border-color: rgba(30,151,127,0.15); }
   .about-stat .num {
     font-family: 'Outfit'; font-size: 56px; font-weight: 800;
     color: var(--gold); line-height: 1;
@@ -285,8 +293,8 @@
   }
   .biz-card:hover::before { transform: scaleX(1); }
   .biz-card:hover {
-    background: rgba(212,168,83,0.04);
-    border-color: rgba(212,168,83,0.12);
+    background: rgba(30,151,127,0.04);
+    border-color: rgba(30,151,127,0.12);
     transform: translateY(-4px);
   }
   .biz-icon {
@@ -325,7 +333,7 @@
     border: 1px solid rgba(255,255,255,0.04);
     cursor: pointer; transition: all 0.5s;
   }
-  .showcase-item:hover { border-color: rgba(212,168,83,0.25); }
+  .showcase-item:hover { border-color: rgba(30,151,127,0.25); }
   .showcase-item .ip-visual {
     position: absolute; inset: 0;
     display: flex; align-items: center; justify-content: center;
@@ -398,7 +406,7 @@
     transition: opacity 0.5s;
   }
   .s1 .ip-gradient { background: radial-gradient(circle at 30% 30%, rgba(196,58,58,0.12), transparent 65%); }
-  .s2 .ip-gradient { background: radial-gradient(circle at 70% 30%, rgba(212,168,83,0.12), transparent 65%); }
+  .s2 .ip-gradient { background: radial-gradient(circle at 70% 30%, rgba(30,151,127,0.12), transparent 65%); }
   .s3 .ip-gradient { background: radial-gradient(circle at 50% 30%, rgba(58,191,143,0.12), transparent 65%); }
 
 
@@ -412,7 +420,7 @@
     font-family:'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', STSong, serif;font-weight:900;
     color:#fff;line-height:1.3;margin-bottom:20px;
   }
-  .pipeline-sidebar h2 .gold{color:var(--gold);}
+  .pipeline-sidebar h2 .gold{color:transparent;}
   .pipeline-sidebar p{font-size:14px;line-height:1.9;color:var(--text-dim);}
   .pipeline-flow{display:flex;flex-direction:column;gap:1px;}
   .pipe-step{
@@ -420,12 +428,12 @@
     background:var(--surface);padding:36px 32px;
     border:1px solid transparent;transition:all 0.4s;position:relative;
   }
-  .pipe-step:hover{border-color:var(--border-gold);background:rgba(201,168,76,0.02);}
+  .pipe-step:hover{border-color:var(--border-gold);background:rgba(30,151,127,0.02);}
   .pipe-num{
     font-family:'Playfair Display',serif;font-size:28px;font-weight:900;
-    color:rgba(201,168,76,0.2);line-height:1;
+    color:rgba(30,151,127,0.2);line-height:1;
   }
-  .pipe-step:hover .pipe-num{color:var(--gold);}
+  .pipe-step:hover .pipe-num{color:var(--brand-accent);}
   .pipe-content h4{font-size:16px;font-weight:600;color:#fff;margin-bottom:8px;}
   .pipe-content p{font-size:13px;line-height:1.7;color:var(--text-dim);}
   .pipe-tags{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
@@ -440,7 +448,7 @@
   .adv-card{
     background:var(--surface);padding:56px 40px;transition:all 0.4s;
   }
-  .adv-card:hover{background:rgba(201,168,76,0.02);}
+  .adv-card:hover{background:rgba(30,151,127,0.02);}
   .adv-icon{
     width:48px;height:48px;margin-bottom:24px;
     color:var(--gold-dim);
@@ -468,7 +476,7 @@
     position: absolute; top: 50%; left: 50%;
     width: 600px; height: 400px;
     transform: translate(-50%,-50%);
-    background: radial-gradient(ellipse, rgba(212,168,83,0.06) 0%, transparent 70%);
+    background: radial-gradient(ellipse, rgba(30,151,127,0.06) 0%, transparent 70%);
     pointer-events: none;
   }
   .cta-section h2 {
@@ -500,7 +508,7 @@
   }
   .contact-card:hover {
     border-color: var(--border-gold);
-    background: rgba(212,168,83,0.03);
+    background: rgba(30,151,127,0.03);
   }
   .contact-wechat {
     display: flex; flex-direction: column; align-items: center;
@@ -540,7 +548,7 @@
   }
   .intent-card:hover {
     border-color: var(--border-gold);
-    background: rgba(212,168,83,0.04);
+    background: rgba(30,151,127,0.04);
     transform: translateX(4px);
   }
   .intent-icon {
@@ -657,7 +665,7 @@
       background: rgba(5,5,8,0.98);
       backdrop-filter: blur(20px);
       padding: 8px 24px 24px;
-      border-bottom: 1px solid rgba(212,168,83,0.12);
+      border-bottom: 1px solid rgba(30,151,127,0.12);
       box-shadow: 0 16px 48px rgba(0,0,0,0.5);
       max-height: calc(100vh - 72px);
       overflow-y: auto;
@@ -713,7 +721,7 @@
     .biz-grid { grid-template-columns: 1fr; }
     .hero-bg-glyph {
       font-size: 32vw;
-      color: rgba(212,168,83,0.04);
+      color: rgba(30,151,127,0.04);
     }
   }
 
@@ -1144,7 +1152,7 @@
 <!-- CTA -->
 <section class="cta-section" id="contact">
   <div class="cta-glow"></div>
-  <h2 class="reveal">共创<span style="color:var(--gold)">山海</span>新纪元</h2>
+  <h2 class="reveal">共创<span class="gold">山海</span>新纪元</h2>
   <p class="cta-sub reveal">寻找合作伙伴 · IP 联名 · 投资洽谈</p>
 
   <div class="contact-grid reveal">
@@ -1340,7 +1348,7 @@ class Particle {
     this.speedX = (Math.random() - 0.5) * 0.3;
     this.speedY = (Math.random() - 0.5) * 0.3;
     this.opacity = Math.random() * 0.5 + 0.1;
-    this.gold = Math.random() > 0.7;
+    this.accent = Math.random() > 0.7;
   }
   update() {
     this.x += this.speedX;
@@ -1350,8 +1358,8 @@ class Particle {
   draw() {
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fillStyle = this.gold
-      ? `rgba(212,168,83,${this.opacity})`
+    ctx.fillStyle = this.accent
+      ? `rgba(30,151,127,${this.opacity})`
       : `rgba(184,184,200,${this.opacity * 0.5})`;
     ctx.fill();
   }

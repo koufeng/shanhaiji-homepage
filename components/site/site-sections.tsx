@@ -85,7 +85,7 @@ export function AboutSection() {
       <div className="section-pad">
         <div className="section-label reveal">About ShanHaiJi.ai</div>
         <h2 className="section-title reveal">
-          在<span className="gold">技术</span>与<span className="gold">叙事</span>之间
+          在技术与叙事之间
           <br />
           创造有灵魂的 IP
         </h2>
@@ -165,19 +165,7 @@ export function IpSection() {
                     <span>{item.en}</span>
                   )}
                 </div>
-                <div className="ip-status">
-                  <span className="pulse" />
-                  {item.status}
-                </div>
                 <p className="ip-desc">{item.desc}</p>
-                <div className="ip-meta">
-                  <span>
-                    类型<strong>{item.type}</strong>
-                  </span>
-                  <span>
-                    状态<strong>{item.state}</strong>
-                  </span>
-                </div>
               </div>
             </Card>
           ))}
@@ -197,7 +185,7 @@ export function PipelineSection() {
             <h2 className="section-title">
               全链路
               <br />
-              <span className="gold">AI 生产力</span>
+              AI 生产力
             </h2>
             <p>从灵感到落地的每个环节，AI 都是我们的核心生产力。不是辅助工具，而是创作引擎。</p>
           </div>
@@ -230,9 +218,7 @@ export function StrengthsSection() {
     <section className="section-border" id="strengths">
       <div className="section-pad">
         <div className="section-label reveal">Why Shanhaiji</div>
-        <h2 className="section-title reveal">
-          选择<span className="gold">山海集</span>的理由
-        </h2>
+        <h2 className="section-title reveal">选择山海集的理由</h2>
         <div className="adv-grid reveal">
           {strengths.map((item) => (
             <Card key={item.title} className="adv-card rounded-none border-0 shadow-none">
@@ -251,9 +237,7 @@ export function ContactSection() {
   return (
     <section className="cta-section" id="contact">
       <div className="cta-glow" />
-      <h2 className="reveal">
-        共创<span className="gold">山海</span>新纪元
-      </h2>
+      <h2 className="reveal">共创山海新纪元</h2>
       <p className="cta-sub reveal">寻找合作伙伴 · IP 联名 · 投资洽谈</p>
       <div className="contact-grid reveal">
         <Card className="contact-card contact-wechat rounded-none shadow-none">
@@ -275,14 +259,16 @@ export function ContactSection() {
                 <p>{intent.desc}</p>
               </div>
               <div className="intent-arrow" aria-hidden="true">
-                <Image src="/images/arrow-right.svg" alt="" width={18} height={18} />
+                <Image src="/images/arrow-right-white.svg" alt="" width={24} height={24} />
               </div>
             </a>
           ))}
         </div>
       </div>
       <div className="contact-base reveal">
-        或直接邮件 <a href="mailto:contact@shanhaiji.ai">contact@shanhaiji.ai</a>
+        <span>或直接邮件</span>
+        <a href="mailto:contact@shanhaiji.ai">contact@shanhaiji.ai</a>
+        <span>24h内回复</span>
       </div>
     </section>
   );

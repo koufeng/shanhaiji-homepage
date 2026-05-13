@@ -9,7 +9,7 @@ type Particle = {
   speedX: number;
   speedY: number;
   opacity: number;
-  gold: boolean;
+  accent: boolean;
 };
 
 export function ParticleCanvas() {
@@ -34,7 +34,7 @@ export function ParticleCanvas() {
       speedX: (Math.random() - 0.5) * 0.3,
       speedY: (Math.random() - 0.5) * 0.3,
       opacity: Math.random() * 0.5 + 0.1,
-      gold: Math.random() > 0.7
+      accent: Math.random() > 0.7
     });
 
     const resize = () => {
@@ -61,8 +61,8 @@ export function ParticleCanvas() {
 
         ctx.beginPath();
         ctx.arc(current.x, current.y, current.size, 0, Math.PI * 2);
-        ctx.fillStyle = current.gold
-          ? `rgba(212,168,83,${current.opacity})`
+        ctx.fillStyle = current.accent
+          ? `rgba(30,151,127,${current.opacity})`
           : `rgba(184,184,200,${current.opacity * 0.5})`;
         ctx.fill();
         return current;

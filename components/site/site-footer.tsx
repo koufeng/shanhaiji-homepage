@@ -1,13 +1,15 @@
 import Link from "next/link";
 
-import { BrandMark } from "@/components/site/brand";
-
 export function SiteFooter() {
   return (
     <footer className="site-footer">
       <div className="footer-inner">
         <div className="footer-brand">
-          <BrandMark />
+          <Link href="/" className="footer-logo" aria-label="山海集首页">
+            <span className="footer-logo-cn">山海集</span>
+            <span className="footer-logo-line" aria-hidden="true" />
+            <span className="footer-logo-en">SHANHAIJI.AI</span>
+          </Link>
           <div className="f-sub">SHANHAIJI CREATIVE TECHNOLOGY</div>
           <p className="f-desc">
             AI 原生的 IP 设计与孵化公司，
